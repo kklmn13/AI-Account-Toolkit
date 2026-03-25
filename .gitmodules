@@ -26,3 +26,6 @@
 [submodule "packages/general/Ultimate-openai-gemini-claude-api-key-scraper"]
 	path = packages/general/Ultimate-openai-gemini-claude-api-key-scraper
 	url = https://github.com/shjee-afridi/Ultimate-openai-gemini-claude-api-key-scraper.git
+[submodule "packages/general/grok-register"]
+	path = packages/general/grok-register
+	url = https://github.com/509992828/grok-register.git

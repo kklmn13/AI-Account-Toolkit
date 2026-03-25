@@ -209,6 +209,18 @@ AI-Account-Toolkit/
 
 **使用指南**：[packages/email/cloudflare_temp_email/README.md](packages/email/cloudflare_temp_email/README.md)
 
+### 16. grok-register - x.ai 注册批处理工具
+
+**功能**：面向 x.ai 注册批处理的一体化项目，提供控制台、注册执行器、WARP 网络出口、grok2api token 落池和运行时环境。
+
+**主要文件**：
+- `DrissionPage_example.py` - 主执行脚本
+- `email_register.py` - 临时邮箱适配层
+- `apps/` - 各功能模块
+- `deploy/` - 启动脚本和部署骨架
+
+**使用指南**：[packages/general/grok-register/README.md](packages/general/grok-register/README.md)
+
 ## 快速开始
 
 ### 1. 环境准备
@@ -246,6 +258,7 @@ git submodule update
 - `packages/codex/codex-lb/` - Codex 负载均衡工具
 - `packages/claude/claude-key-switch/` - Claude 密钥切换工具
 - `packages/general/Ultimate-openai-gemini-claude-api-key-scraper/` - 多平台 API 密钥抓取工具
+- `packages/general/grok-register/` - x.ai 注册批处理工具
 
 ### 3. 配置设置
 

@@ -55,6 +55,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **通用工具子模块**
   - **packages/general/any-auto-register** (submodule) - 多平台账号自动注册工具
   - **packages/general/Ultimate-openai-gemini-claude-api-key-scraper** (submodule) - 多平台 API 密钥抓取工具
+  - **packages/general/grok-register** (submodule) - x.ai 注册批处理工具
+    - 面向 x.ai 注册批处理的一体化项目
+    - 提供控制台、注册执行器、WARP 网络出口
+    - 支持 grok2api token 落池和运行时环境
+    - 内置 warp 网络出口和 grok2api token sink
 
 ### Updated
 
