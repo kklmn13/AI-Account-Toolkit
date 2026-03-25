@@ -221,6 +221,40 @@ AI-Account-Toolkit/
 
 **使用指南**：[packages/general/grok-register/README.md](packages/general/grok-register/README.md)
 
+### 17. MREGISTER - ChatGPT 注册机 Web UI
+
+**功能**：基于 FastAPI 的控制台，用来统一管理 chatgpt_register_v2 和 grok-register 两个注册脚本。它把原本偏命令行的执行方式包装成可持久化、可排队、可下载结果、可通过 API 调用的任务系统。
+
+**主要文件**：
+- `web_console/` - FastAPI 控制台
+- `chatgpt_register_v2/` - ChatGPT 注册脚本
+- `grok-register/` - Grok 注册脚本
+- `docker-compose.yml` - 容器化部署配置
+
+**使用指南**：[packages/general/MREGISTER/README.md](packages/general/MREGISTER/README.md)
+
+### 18. codex_register - Codex 注册脚本
+
+**功能**：基于 Python 的 HTTP 自动化脚本，通过接口执行账号注册/登录相关步骤，并通过 MailAPI 轮询邮箱验证码，注册完成后自动上传到 CPA（如果有配置的话）。
+
+**主要文件**：
+- `codex_register.py` - 主流程：并发执行、验证码轮询、结果保存、上传
+- `mailapi.py` - MailAPI 封装：查询邮件并提取 6 位验证码
+- `requirements.txt` - Python 依赖列表
+
+**使用指南**：[packages/codex/codex_register/README.md](packages/codex/codex_register/README.md)
+
+### 19. codex-register-fix - Codex 注册修复版本
+
+**功能**：基于 codex-manager 二次开发，修复了原项目因 OpenAI 授权流程变更导致的注册失败问题。
+
+**主要文件**：
+- `webui.py` - Web UI 主脚本
+- `requirements.txt` - Python 依赖列表
+- `data/` - 数据存储目录
+
+**使用指南**：[packages/codex/codex-register-fix/README.md](packages/codex/codex-register-fix/README.md)
+
 ## 快速开始
 
 ### 1. 环境准备
@@ -259,6 +293,9 @@ git submodule update
 - `packages/claude/claude-key-switch/` - Claude 密钥切换工具
 - `packages/general/Ultimate-openai-gemini-claude-api-key-scraper/` - 多平台 API 密钥抓取工具
 - `packages/general/grok-register/` - x.ai 注册批处理工具
+- `packages/general/MREGISTER/` - ChatGPT 注册机 Web UI
+- `packages/codex/codex_register/` - Codex 注册脚本
+- `packages/codex/codex-register-fix/` - Codex 注册修复版本
 
 ### 3. 配置设置
 

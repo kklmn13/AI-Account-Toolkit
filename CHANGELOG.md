@@ -60,6 +60,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     - 提供控制台、注册执行器、WARP 网络出口
     - 支持 grok2api token 落池和运行时环境
     - 内置 warp 网络出口和 grok2api token sink
+  - **packages/general/MREGISTER** (submodule) - ChatGPT 注册机 Web UI
+    - 基于 FastAPI 的控制台，统一管理注册脚本
+    - 提供可持久化、可排队、可下载结果的任务系统
+    - 支持通过 API 调用任务接口
+    - 内置 chatgpt_register_v2 和 grok-register 脚本
+
+- **Codex 相关子模块**
+  - **packages/codex/codex-lb** (submodule) - Codex 负载均衡工具
+  - **packages/codex/codex_register** (submodule) - Codex 注册脚本
+    - 基于 Python 的 HTTP 自动化脚本
+    - 通过 MailAPI 轮询邮箱验证码
+    - 注册完成后自动上传到 CPA
+    - 支持并发执行和代理管理
+  - **packages/codex/codex-register-fix** (submodule) - Codex 注册修复版本
+    - 基于 codex-manager 二次开发
+    - 修复 OpenAI 授权流程变更导致的注册失败问题
+    - 支持 Sentinel PoW Token 生成
+    - 提供完整的 OAuth 登录流程
 
 ### Updated
 

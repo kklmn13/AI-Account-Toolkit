@@ -29,3 +29,12 @@
 [submodule "packages/general/grok-register"]
 	path = packages/general/grok-register
 	url = https://github.com/509992828/grok-register.git
+[submodule "packages/general/MREGISTER"]
+	path = packages/general/MREGISTER
+	url = https://github.com/Maishan-Inc/MREGISTER.git
+[submodule "packages/codex/codex_register"]
+	path = packages/codex/codex_register
+	url = https://github.com/kschen202115/codex_register.git
+[submodule "packages/codex/codex-register-fix"]
+	path = packages/codex/codex-register-fix
+	url = https://github.com/917017420/codex-register-fix.git
