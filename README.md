@@ -299,6 +299,17 @@ AI-Account-Toolkit/
 
 **使用指南**：[packages/general/cursor-auto-register/README.md](packages/general/cursor-auto-register/README.md)
 
+### 24. ExaFree - Exa 免费使用工具
+
+**功能**：Exa 免费使用工具，提供 Exa 相关服务的免费访问。
+
+**主要文件**：
+- 主程序文件
+- 配置文件
+- README.md - 项目说明
+
+**使用指南**：[packages/general/ExaFree/README.md](packages/general/ExaFree/README.md)
+
 ## 快速开始
 
 ### 1. 环境准备
@@ -344,6 +355,7 @@ git submodule update
 - `packages/email/Hotmail-Outlook-Create-Account-Register-Auto/` - Hotmail 账号自动创建工具
 - `packages/email/outlook-auto-register/` - Outlook 邮箱注册工具集
 - `packages/general/cursor-auto-register/` - 光标设置管理工具
+- `packages/general/ExaFree/` - Exa 免费使用工具
 
 ### 3. 配置设置
 

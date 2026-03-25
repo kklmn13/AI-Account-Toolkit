@@ -70,6 +70,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     - 创建和管理光标配置文件
     - 备份和恢复光标设置
     - 适用于 Windows 和 macOS 系统
+  - **packages/general/ExaFree** (submodule) - Exa 免费使用工具
+    - 提供 Exa 相关服务的免费访问
+    - 支持 Exa 功能的使用
+    - 简单易用的界面
+    - 适用于需要 Exa 服务的用户
 
 - **Codex 相关子模块**
   - **packages/codex/codex-lb** (submodule) - Codex 负载均衡工具

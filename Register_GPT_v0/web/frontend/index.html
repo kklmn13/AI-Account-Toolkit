@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sora 批量注册</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/style.css?v=20260318-1" />
+</head>
+<body>
+  <div id="app">
+    <div id="login-page" class="page">
+      <div class="login-box">
+        <h1>Sora 批量注册</h1>
+        <form id="login-form">
+          <input type="text" id="login-username" placeholder="账号" required autocomplete="username" />
+          <input type="password" id="login-password" placeholder="密码" required autocomplete="current-password" />
+          <button type="submit">登录</button>
+        </form>
+        <p id="login-error" class="error"></p>
+      </div>
+    </div>
+    <div id="admin-page" class="page hidden layout-sidebar">
+      <aside class="sidebar collapsed" id="sidebar">
+        <div class="sidebar-header">
+          <div class="logo"><span class="logo-icon" aria-hidden="true">S</span><span class="logo-text">Sora 批量注册</span></div>
+          <button type="button" class="sidebar-toggle sidebar-toggle-in-header" id="sidebar-toggle" title="展开/收起菜单" aria-label="展开或收起侧栏"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></button>
+        </div>
+        <nav class="nav">
+          <a href="#" data-tab="logs" title="批量注册"><span class="nav-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></span><span class="nav-text">批量注册</span></a>
+          <a href="#" data-tab="accounts" title="账号管理"><span class="nav-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span><span class="nav-text">账号管理</span></a>
+          <a href="#" data-tab="video" title="视频生成"><span class="nav-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="15" height="14" rx="2"/><path d="M22 7l-5 3.5L22 14z"/></svg></span><span class="nav-text">视频生成</span></a>
+          <a href="#" data-tab="keys" title="Key管理"><span class="nav-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 2l-2 2"/><path d="M7.5 7.5a5 5 0 1 1 7.07 7.07L7 22H2v-5z"/><path d="M16 5l3 3"/></svg></span><span class="nav-text">Key管理</span></a>
+          <a href="#" data-tab="emails" title="邮箱管理"><span class="nav-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span><span class="nav-text">邮箱管理</span></a>
+          <a href="#" data-tab="bank-cards" title="银行卡管理"><span class="nav-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg></span><span class="nav-text">银行卡管理</span></a>
+          <a href="#" data-tab="phones" title="手机号管理"><span class="nav-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></span><span class="nav-text">手机号管理</span></a>
+          <a href="#" data-tab="settings" title="系统设置"><span class="nav-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></span><span class="nav-text">系统设置</span></a>
+        </nav>
+        <div class="sidebar-footer">
+          <a class="sidebar-link" href="https://wp.qq.com/wpa/g_wpa_get?guin=1093370579" target="_blank" rel="noopener"><span class="nav-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></span><span class="footer-text">QQ群 1093370579</span></a>
+          <a class="sidebar-link" href="https://github.com/mengyp2022-droid/sora-qq-1093370579" target="_blank" rel="noopener"><span class="nav-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></span><span class="footer-text">仓库地址</span></a>
+          <span class="user-name user-name-clickable" id="current-user" title="点击修改账号密码"><span class="user-name-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="8" cy="15" r="4"/><path d="M10.85 12.15L19 4"/><path d="M18 5l2 2"/><path d="M15 8l2 2"/></svg></span><span class="user-name-text"></span></span>
+          <button type="button" id="btn-logout" class="btn-logout">退出</button>
+          <button type="button" class="sidebar-toggle sidebar-toggle-in-footer" id="sidebar-toggle-footer" title="展开/收起菜单" aria-label="展开或收起侧栏"><span class="nav-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></span><span class="toggle-footer-text">收起</span></button>
+        </div>
+      </aside>
+      <main class="main">
+        <section id="panel-accounts" class="panel">
+          <h2>账号管理</h2>
+          <p id="accounts-db-hint" class="db-hint" style="margin:0 0 0.75rem 0;font-size:0.85rem;color:var(--text-muted, #888);"></p>
+          <div class="toolbar">
+            <label>状态 <select id="filter-status"><option value="">全部</option><option value="Registered">已注册</option><option value="Registered+Sora">Sora2</option><option value="Plus activated">Plus</option></select></label>
+            <label>SORA <select id="filter-sora"><option value="">全部</option><option value="true">是</option><option value="false">否</option></select></label>
+            <label>PLUS <select id="filter-plus"><option value="">全部</option><option value="true">是</option><option value="false">否</option></select></label>
+            <button type="button" id="btn-recheck-sora-quota">自动复检额度</button>
+            <button type="button" id="btn-export-accounts">批量导出 CSV</button>
+          </div>
+          <div class="email-api-card">
+            <h3>Sora 视频入口</h3>
+            <p class="email-api-desc">视频生成功能已独立到左侧「视频生成」。你可以先在本页筛账号，再进入视频页直接出片。</p>
+            <div class="email-api-row">
+              <button type="button" id="btn-go-video-page">前往视频生成</button>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead><tr><th>ID</th><th>邮箱</th><th title="ChatGPT 登录密码，非邮箱密码">GPT密码</th><th>状态</th><th>SORA</th><th>PLUS</th><th>手机</th><th>RT</th><th>注册时间</th><th>额度状态</th><th>操作</th></tr></thead>
+              <tbody id="accounts-tbody"></tbody>
+            </table>
+          </div>
+          <div class="pagination" id="accounts-pagination"></div>
+        </section>
+        <section id="panel-video" class="panel hidden">
+          <div class="video-page-head">
+            <div>
+              <h2>视频生成</h2>
+              <p class="panel-desc">文生视频默认走官方 Sora app / NF2，图生视频暂时保留旧链路。创建入口收进一个对话框里，支持自动轮换可用账号、并行生成多条任务，并持续显示进度、排队信息和耗时。</p>
+            </div>
+            <div class="video-page-head-actions">
+              <button type="button" id="btn-sora-video-open-composer" class="video-launch-btn">生成任务</button>
+            </div>
+          </div>
+          <div class="video-stage-shell">
+            <section class="video-stage-card">
+              <div id="sora-video-stage-media" class="video-stage-media">
+                <div class="video-stage-placeholder">
+                  <div class="video-stage-placeholder-icon">Sora</div>
+                  <p>还没有任务，点击右上角黄色按钮开始生成。</p>
+                </div>
+              </div>
+              <div class="video-stage-meta">
+                <div class="video-stage-title-row">
+                  <div>
+                    <p id="sora-video-stage-kicker" class="video-stage-kicker">等待任务</p>
+                    <h3 id="sora-video-stage-title">选择一个任务进行预览</h3>
+                  </div>
+                  <span id="sora-video-stage-status" class="sora-status-badge is-pending">idle</span>
+                </div>
+                <p id="sora-video-stage-prompt" class="video-stage-prompt">生成完成后，视频会显示在这个大框里；任务未完成时会显示当前进度和时间。</p>
+                <div class="video-stage-progress-track">
+                  <span id="sora-video-stage-progress-fill" class="video-stage-progress-fill" style="width:0%;"></span>
+                </div>
+                <div class="video-stage-stats">
+                  <div class="video-stage-stat">
+                    <span>进度</span>
+                    <strong id="sora-video-stage-progress-text">0%</strong>
+                  </div>
+                  <div class="video-stage-stat">
+                    <span>已用时间</span>
+                    <strong id="sora-video-stage-elapsed">00:00</strong>
+                  </div>
+                  <div class="video-stage-stat">
+                    <span>排队信息</span>
+                    <strong id="sora-video-stage-queue">等待中</strong>
+                  </div>
+                  <div class="video-stage-stat">
+                    <span>账号</span>
+                    <strong id="sora-video-stage-account">自动选择</strong>
+                  </div>
+                </div>
+                <div class="video-stage-footer">
+                  <span id="sora-video-stage-created" class="video-stage-footnote">创建时间 --</span>
+                  <span id="sora-video-stage-hint" class="video-stage-footnote">支持多任务并行轮询</span>
+                </div>
+              </div>
+            </section>
+            <aside class="video-side-column">
+              <div class="video-side-card video-side-card-accent">
+                <div class="video-side-card-head">
+                  <div>
+                    <h3>生成引擎</h3>
+                    <p>自动轮换开启后，每次新任务会从可用池里取账号。</p>
+                  </div>
+                  <label class="video-toggle">
+                    <input type="checkbox" id="sora-video-auto-rotate" checked />
+                    <span>自动轮换</span>
+                  </label>
+                </div>
+                <p id="sora-api-msg" class="email-api-msg"></p>
+                <div id="sora-video-overview" class="video-overview-grid"></div>
+              </div>
+              <div class="video-side-card">
+                <div class="video-side-card-head">
+                  <div>
+                    <h3>当前账号</h3>
+                    <p>需要时可手动切换或做账号级操作。</p>
+                  </div>
+                </div>
+                <div class="email-api-row">
+                  <label>账号 ID <input type="number" id="sora-api-account-id" min="1" placeholder="例如 9" style="width:120px;" /></label>
+                  <button type="button" id="btn-sora-pick-next" class="btn-default">切换下一个可用账号</button>
+                </div>
+                <div id="sora-video-account-summary" class="sora-account-summary"></div>
+                <details class="video-advanced-card">
+                  <summary>高级账号控制</summary>
+                  <div class="video-advanced-card-body">
+                    <div class="email-api-row">
+                      <button type="button" id="btn-sora-me">测试 Sora API</button>
+                      <button type="button" id="btn-sora-activate">一键激活 Sora</button>
+                    </div>
+                    <div class="email-api-row" style="margin-top:0.75rem;">
+                      <button type="button" id="btn-sora-key-create">生成调用 API Key</button>
+                      <button type="button" id="btn-sora-key-list" class="btn-default">查看账号 Key</button>
+                    </div>
+                    <div class="email-api-row" style="margin-top:0.75rem;">
+                      <label>导入任务 ID <input type="text" id="sora-video-task-id" placeholder="task_..." style="width:220px;" /></label>
+                      <button type="button" id="btn-sora-video-import-task" class="btn-default">添加到任务墙</button>
+                    </div>
+                    <div id="sora-key-list" class="sora-key-list"></div>
+                  </div>
+                </details>
+              </div>
+            </aside>
+          </div>
+          <section class="video-task-board">
+            <div class="video-task-board-head">
+              <div>
+                <h3>并行任务</h3>
+                <p id="sora-video-msg" class="email-api-msg">新创建的任务会自动加入这里并并行轮询。</p>
+              </div>
+              <div class="video-task-board-actions">
+                <button type="button" id="btn-sora-video-refresh-all" class="btn-default">刷新全部</button>
+                <button type="button" id="btn-sora-video-stop-all" class="btn-default">暂停全部</button>
+                <button type="button" id="btn-sora-video-clear-finished" class="btn-default">清理已结束</button>
+              </div>
+            </div>
+            <div id="sora-video-task-list" class="video-task-list"></div>
+          </section>
+          <div id="sora-video-compose-overlay" class="video-compose-overlay hidden">
+            <div id="btn-sora-video-compose-backdrop" class="video-compose-backdrop"></div>
+            <div class="video-compose-dialog">
+              <div class="video-compose-head">
+                <div>
+                  <p class="video-compose-kicker">Task Composer</p>
+                  <h3>生成任务</h3>
+                  <p>文生视频现在可手动选择 NF2 或旧链路；图生视频仍使用旧接口。任务数大于 1 时会并行发起创建，并分别轮询。</p>
+                </div>
+                <button type="button" id="btn-sora-video-compose-close" class="video-compose-close" aria-label="关闭">×</button>
+              </div>
+              <div class="video-compose-grid video-compose-grid-compact">
+                <label>任务类型
+                  <select id="sora-video-task-mode">
+                    <option value="text_to_video">文生视频</option>
+                    <option value="image_to_video">图生视频</option>
+                  </select>
+                </label>
+                <label id="sora-video-task-family-field">生成链路
+                  <select id="sora-video-task-family">
+                    <option value="video_gen">旧链路（当前可用）</option>
+                    <option value="nf2">NF2 / 官方 Sora</option>
+                  </select>
+                </label>
+              </div>
+              <label id="sora-video-image-field" class="sora-video-field sora-video-image-field hidden">
+                <span>参考图</span>
+                <input type="file" id="sora-video-image-file" accept="image/*" />
+                <small id="sora-video-image-meta">上传一张图片作为视频的起始画面。</small>
+              </label>
+              <label class="sora-video-field sora-video-prompt-field">
+                <span>Prompt</span>
+                <textarea id="sora-video-prompt" rows="5" placeholder="例如：A cinematic shot of ocean waves at sunrise."></textarea>
+              </label>
+              <div id="sora-video-audio-fields" class="video-compose-grid video-compose-grid-compact">
+                <label>
+                  音效描述(可选)
+                  <textarea id="sora-video-audio-caption" rows="2" placeholder="例如：海浪声、海风、远处海鸥。"></textarea>
+                </label>
+                <label>
+                  台词/口播(可选)
+                  <textarea id="sora-video-audio-transcript" rows="2" placeholder="例如：旁白内容；留空则仅按 prompt 和音效描述生成。"></textarea>
+                </label>
+              </div>
+              <div class="video-compose-grid">
+                <label>任务数 <input type="number" id="sora-video-batch-count" min="1" max="6" value="1" /></label>
+                <label>变体 <input type="number" id="sora-video-variants" min="1" max="4" value="1" /></label>
+                <label>帧数 <input type="number" id="sora-video-frames" min="60" max="720" step="30" value="300" /></label>
+                <label>轮询间隔(秒) <input type="number" id="sora-video-poll-interval" min="1" max="60" value="5" /></label>
+                <label>超时(秒) <input type="number" id="sora-video-timeout" min="30" max="7200" value="900" /></label>
+                <label>分辨率
+                  <select id="sora-video-resolution">
+                    <option value="360">360</option>
+                    <option value="480">480</option>
+                    <option value="720">720</option>
+                  </select>
+                </label>
+                <label>方向
+                  <select id="sora-video-orientation">
+                    <option value="wide">wide</option>
+                    <option value="tall">tall</option>
+                    <option value="square">square</option>
+                  </select>
+                </label>
+              </div>
+              <p id="sora-video-compose-msg" class="email-api-msg"></p>
+              <div class="video-compose-actions">
+                <button type="button" id="btn-sora-video-create" class="video-launch-btn">开始生成</button>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section id="panel-keys" class="panel hidden">
+          <div class="key-page-head">
+            <div>
+              <h2>Key管理</h2>
+              <p class="panel-desc">这里集中管理本地 Sora 轮换池 API Key。池 key 会从可用账号池自动取号；可按文生视频、图生视频、文生+图生三种能力发放。</p>
+            </div>
+            <div class="key-page-head-actions">
+              <button type="button" id="btn-key-manager-refresh" class="btn-default">刷新列表</button>
+            </div>
+          </div>
+          <div class="key-manager-grid">
+            <section class="key-manager-card key-manager-card-create">
+              <div class="key-manager-card-head">
+                <div>
+                  <h3>生成轮换池 Key</h3>
+                  <p>生成后直接用于本地 <code>/api/sora-api/*</code>。该页默认生成自动轮换池 key，不绑定单账号。</p>
+                </div>
+              </div>
+              <div class="key-manager-form">
+                <label class="key-manager-field">
+                  <span>Key 名称</span>
+                  <input type="text" id="sora-key-create-name" placeholder="例如：主池文生Key" />
+                </label>
+                <div class="key-manager-field">
+                  <span>Key 类型</span>
+                  <div id="sora-key-scope-options" class="key-scope-options">
+                    <label class="key-scope-option is-selected">
+                      <input type="radio" name="sora-key-scope" value="text_to_video" checked />
+                      <strong>文生视频 Key</strong>
+                      <small>可调用当前已接好的文生视频接口</small>
+                    </label>
+                    <label class="key-scope-option">
+                      <input type="radio" name="sora-key-scope" value="image_to_video" />
+                      <strong>图生视频 Key</strong>
+                      <small>为后续图生视频链路预留的专用 key</small>
+                    </label>
+                    <label class="key-scope-option">
+                      <input type="radio" name="sora-key-scope" value="all_video" />
+                      <strong>文生 + 图生 Key</strong>
+                      <small>同一把 key 同时覆盖两种视频能力</small>
+                    </label>
+                  </div>
+                </div>
+                <div class="key-manager-inline">
+                  <span class="key-chip key-chip-pool">轮换池</span>
+                  <span class="key-chip key-chip-rotate">自动轮换账号</span>
+                  <span class="key-chip key-chip-local">仅本地包装接口</span>
+                </div>
+                <div class="key-manager-actions">
+                  <button type="button" id="btn-key-manager-create" class="video-launch-btn">生成轮换池 API Key</button>
+                </div>
+                <p id="sora-key-manager-msg" class="email-api-msg"></p>
+              </div>
+            </section>
+            <aside class="key-manager-card key-manager-card-stats">
+              <div class="key-manager-card-head">
+                <div>
+                  <h3>Key 概览</h3>
+                  <p>创建完成后会在下方列表展示；停用后立即失效。</p>
+                </div>
+              </div>
+              <div id="sora-key-stats" class="key-stats-grid"></div>
+              <p class="key-manager-footnote">当前本地包装层已经接好文生视频。图生视频 key 类型已可发放和管理，等图生接口接入后可直接复用。</p>
+            </aside>
+          </div>
+          <section class="key-manager-card">
+            <div class="key-manager-card-head key-manager-card-head-table">
+              <div>
+                <h3>现有 Key</h3>
+                <p>支持筛选池 key、账号 key，以及不同视频能力类型。</p>
+              </div>
+              <div class="toolbar key-toolbar">
+                <label>模式
+                  <select id="sora-key-filter-mode">
+                    <option value="">全部</option>
+                    <option value="pool">轮换池</option>
+                    <option value="bound">账号绑定</option>
+                  </select>
+                </label>
+                <label>类型
+                  <select id="sora-key-filter-scope">
+                    <option value="">全部</option>
+                    <option value="text_to_video">文生视频</option>
+                    <option value="image_to_video">图生视频</option>
+                    <option value="all_video">文生+图生</option>
+                  </select>
+                </label>
+                <label>状态
+                  <select id="sora-key-filter-status">
+                    <option value="all">全部</option>
+                    <option value="active">启用中</option>
+                    <option value="inactive">已停用</option>
+                  </select>
+                </label>
+                <button type="button" id="btn-sora-key-filter-refresh" class="btn-default">刷新</button>
+              </div>
+            </div>
+            <div class="table-wrap">
+              <table class="data-table key-data-table">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>名称</th>
+                    <th>类型</th>
+                    <th>模式</th>
+                    <th>账号</th>
+                    <th>Key 掩码</th>
+                    <th>状态</th>
+                    <th>最近调用</th>
+                    <th>创建时间</th>
+                    <th>操作</th>
+                  </tr>
+                </thead>
+                <tbody id="sora-key-table-body"></tbody>
+              </table>
+            </div>
+          </section>
+        </section>
+        <section id="panel-emails" class="panel hidden">
+          <h2>邮箱管理</h2>
+          <div class="email-api-card">
+            <h3>从 Hotmail007 拉取</h3>
+            <p class="email-api-desc">需在 <a href="#" id="link-to-settings">系统设置</a> 中配置邮箱 API 地址与 KEY（clientKey）。<a href="https://hotmail007.com/zh/apiDoc" target="_blank" rel="noopener">API 文档</a>（单个 $0.0015/账号 - $0.02/账号）</p>
+            <div class="email-api-row">
+              <span>余额：<strong id="email-api-balance">--</strong></span>
+              <label>类型 <select id="email-api-mail-type"><option value="outlook">outlook</option><option value="hotmail">hotmail</option><option value="hotmail Trusted">hotmail 可信（有效期 3-6 个月）</option><option value="outlook Trusted">outlook 可信（有效期 3-6 个月）</option></select></label>
+              <label>数量 <input type="number" id="email-api-quantity" min="1" max="100" value="1" /></label>
+              <button type="button" id="btn-email-api-stock">查询库存</button>
+              <button type="button" id="btn-email-api-fetch">拉取并导入</button>
+            </div>
+            <p id="email-api-msg" class="email-api-msg"></p>
+          </div>
+          <div class="toolbar">
+            <button type="button" id="btn-add-email">添加</button>
+            <button type="button" id="btn-batch-import-email">批量导入</button>
+            <button type="button" id="btn-batch-export-email">批量导出</button>
+          </div>
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead><tr><th>ID</th><th>邮箱</th><th>密码</th><th>UUID</th><th>状态</th><th>操作</th></tr></thead>
+              <tbody id="emails-tbody"></tbody>
+            </table>
+          </div>
+        </section>
+        <section id="panel-bank-cards" class="panel hidden">
+          <h2>银行卡管理</h2>
+          <div class="toolbar">
+            <button type="button" id="btn-add-card">添加</button>
+            <button type="button" id="btn-batch-import-card">批量导入</button>
+            <button type="button" id="btn-batch-delete-card">批量删除</button>
+          </div>
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead><tr><th><input type="checkbox" id="check-all-cards" /></th><th>ID</th><th>卡号(掩码)</th><th>使用次数</th><th>备注</th><th>操作</th></tr></thead>
+              <tbody id="cards-tbody"></tbody>
+            </table>
+          </div>
+        </section>
+        <section id="panel-phones" class="panel hidden">
+          <h2>手机号管理</h2>
+          <p class="panel-desc">手机号绑定数在 <a href="#" id="link-to-settings-phones">系统设置</a> 中配置「手机号绑定数」；批量导入时自动应用该默认值。</p>
+          <div class="email-api-card">
+            <h3>Hero-SMS 接码（OpenAI）</h3>
+            <p class="email-api-desc">需在系统设置中配置手机号接码 API 地址与 KEY。<a href="https://hero-sms.com/cn/api" target="_blank" rel="noopener">API 文档</a></p>
+            <div class="email-api-row">
+              <span>余额：<strong id="sms-api-balance">--</strong></span>
+              <button type="button" id="btn-sms-api-test">测试接口</button>
+              <span>OpenAI 可用数量：<strong id="sms-api-openai-count">--</strong></span>
+              <button type="button" id="btn-sms-api-refresh-openai">查询</button>
+              <button type="button" id="btn-sms-api-debug-prices" class="btn-default">查看原始数据</button>
+              <button type="button" id="btn-sms-api-services" class="btn-default">服务列表</button>
+              </div>
+            <div class="email-api-row" style="margin-top:0.5rem;">
+              <label>获取数量 <input type="number" id="sms-api-get-quantity" min="1" max="20" value="1" /></label>
+              <label>国家 ID <input type="number" id="sms-api-country" value="16" placeholder="16=英国" style="width:80px;" title="16=英国，0=自动" /></label>
+              <button type="button" id="btn-sms-api-get-numbers">获取 OpenAI 号码</button>
+            </div>
+            <p id="sms-api-msg" class="email-api-msg"></p>
+          </div>
+          <div class="toolbar">
+            <button type="button" id="btn-add-phone">添加</button>
+            <button type="button" id="btn-batch-import-phone">批量导入</button>
+            <button type="button" id="btn-batch-delete-phone">批量删除</button>
+          </div>
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead><tr><th><input type="checkbox" id="check-all-phones" /></th><th>ID</th><th>手机号</th><th>已绑定/上限</th><th>到期时间</th><th>备注</th><th>操作</th></tr></thead>
+              <tbody id="phones-tbody"></tbody>
+            </table>
+          </div>
+        </section>
+        <section id="panel-logs" class="panel hidden">
+          <h2>批量注册</h2>
+          <div class="dashboard-card">
+            <div class="dashboard-actions">
+              <button type="button" id="btn-start-register" class="btn-dash btn-primary">开启注册</button>
+              <button type="button" id="btn-stop-register" class="btn-dash btn-secondary" style="display:none;">停止任务</button>
+              <button type="button" id="btn-start-bind-phone" class="btn-dash btn-secondary">开始绑定手机</button>
+              <label class="dashboard-inline-field" for="phone-bind-max-count" title="填写多少，就按多少并发执行，并以成功绑定数量为目标">
+                <span>并发数量</span>
+                <input type="number" id="phone-bind-max-count" min="1" max="100" value="1" />
+              </label>
+              <button type="button" id="btn-stop-bind-phone" class="btn-dash btn-secondary" style="display:none;">停止绑定</button>
+              <button type="button" id="btn-start-plus" class="btn-dash btn-secondary">开始开通 Plus</button>
+              <span id="register-status-heartbeat" class="register-heartbeat" style="display:none;"></span>
+            </div>
+            <div class="dashboard-stats">
+              <div class="stat-item"><span class="stat-label">今日注册</span><span class="stat-value" id="dash-today">0</span></div>
+              <div class="stat-item"><span class="stat-label">合计注册</span><span class="stat-value" id="dash-total">0</span></div>
+              <div class="stat-item"><span class="stat-label">绑定手机</span><span class="stat-value" id="dash-phone">0</span></div>
+              <div class="stat-item"><span class="stat-label">开通 Plus</span><span class="stat-value" id="dash-plus">0</span></div>
+              <div class="stat-item"><span class="stat-label">Sora可用账号</span><span class="stat-value" id="dash-sora-available">0</span></div>
+              <div class="stat-item" title="这是当前轮换池里未标记额度耗尽、且可直接用于生成的账号数，不是上游返回的剩余视频次数。"><span class="stat-label">当前可尝试生成</span><span class="stat-value" id="dash-sora-daily-capacity">0</span></div>
+              <div class="stat-item"><span class="stat-label">今日生成视频</span><span class="stat-value" id="dash-sora-generated-today">0</span></div>
+              <div class="stat-item"><span class="stat-label">成功</span><span class="stat-value stat-ok" id="dash-success">0</span></div>
+              <div class="stat-item"><span class="stat-label">失败</span><span class="stat-value stat-fail" id="dash-fail">0</span></div>
+              <div class="stat-item"><span class="stat-label">邮箱 API</span><span class="stat-value stat-value-muted" id="dash-email-api">—</span></div>
+              <div class="stat-item"><span class="stat-label">手机号 API</span><span class="stat-value stat-value-muted" id="dash-sms-api">—</span></div>
+              <div class="stat-item"><span class="stat-label">银行卡 API</span><span class="stat-value stat-value-muted" id="dash-bank-api">—</span></div>
+              <div class="stat-item"><span class="stat-label">打码 API</span><span class="stat-value stat-value-muted" id="dash-captcha-api">—</span></div>
+              <div class="stat-item"><span class="stat-label">线程数</span><span class="stat-value" id="dash-threads">1</span></div>
+            </div>
+          </div>
+          <div class="log-panel">
+            <div class="log-panel-header">
+              <span class="log-panel-title" id="log-panel-title">最近 20 条日志</span>
+              <div class="log-panel-actions">
+                <button type="button" id="btn-refresh-dashboard" class="log-panel-refresh" title="刷新">刷新</button>
+                <button type="button" id="btn-clear-logs" class="log-panel-refresh log-panel-clear" title="清空">清空</button>
+              </div>
+            </div>
+            <div class="log-panel-expand" id="log-expand-area"></div>
+            <div class="log-list log-list-fixed" id="log-list"></div>
+          </div>
+        </section>
+        <section id="panel-settings" class="panel hidden">
+          <h2>系统设置</h2>
+          <form id="settings-form" class="settings-grid">
+            <div class="settings-card">
+              <h3>手机号接码 API</h3>
+              <p class="settings-card-desc">支持 Hero-SMS（SMS-Activate 兼容）。<a href="https://hero-sms.com/cn/api" target="_blank" rel="noopener">API 文档</a></p>
+              <label>API 地址 <input type="text" name="sms_api_url" placeholder="https://hero-sms.com/stubs/handler_api.php" /></label>
+              <label>KEY (api_key) <input type="password" name="sms_api_key" placeholder="Hero-SMS API Key" autocomplete="off" /></label>
+              <label>OpenAI 服务 ID <input type="text" name="sms_openai_service" placeholder="dr（Hero-SMS 中 OpenAI 的 code）" title="接码平台服务列表里 OpenAI 对应 code，Hero-SMS 为 dr" /></label>
+              <label>获取号码最高价 (maxPrice) <input type="number" name="sms_max_price" placeholder="0.55" min="0" step="0.01" title="getNumberV2 时仅接受不高于此价的号码" /></label>
+            </div>
+            <div class="settings-card">
+              <h3>邮箱 API</h3>
+              <label>API 地址 <input type="text" name="email_api_url" placeholder="https://gapi.hotmail007.com" /></label>
+              <label>KEY (clientKey) <input type="password" name="email_api_key" placeholder="Hotmail007 clientKey" autocomplete="off" /></label>
+              <label>默认邮箱类型 <select name="email_api_default_type"><option value="outlook">outlook</option><option value="hotmail">hotmail</option><option value="hotmail Trusted">hotmail 可信（3-6 个月）</option><option value="outlook Trusted">outlook 可信（3-6 个月）</option></select></label>
+            </div>
+            <div class="settings-card">
+              <h3>银行卡 API</h3>
+              <label>平台 <select name="bank_card_api_platform"><option value="寻汇">寻汇</option><option value="万里汇">万里汇</option><option value="空中云汇">空中云汇</option></select></label>
+              <label>API 地址 <input type="text" name="bank_card_api_url" placeholder="https://..." /></label>
+              <label>KEY <input type="password" name="bank_card_api_key" placeholder="API Key" autocomplete="off" /></label>
+            </div>
+            <div class="settings-card">
+              <h3>代理 IP</h3>
+              <label>单代理地址 <input type="text" name="proxy_url" placeholder="http://127.0.0.1:7890" /></label>
+              <label>代理 API 地址 <input type="text" name="proxy_api_url" placeholder="从 API 获取代理列表" /></label>
+            </div>
+            <div class="settings-card">
+              <h3>打码 API</h3>
+              <p class="settings-card-desc">开通 Plus 等流程中会遇到 hCaptcha，可使用 <a href="https://2captcha.com/" target="_blank" rel="noopener">2Captcha</a> 打码。</p>
+              <label>API 地址 <input type="text" name="captcha_api_url" placeholder="https://2captcha.com" /></label>
+              <label>API KEY <input type="password" name="captcha_api_key" placeholder="2Captcha API Key" autocomplete="off" /></label>
+            </div>
+            <div class="settings-card">
+              <h3>OAuth / 注册换 Token</h3>
+              <p class="settings-card-desc">填写 OAuth Client ID 后，注册成功会先尝试从 callback 取 code 换 token；若无则自动再走一遍「邮箱+密码」登录，用 redirect_uri=http://localhost:1455/auth/callback 从 302 取 code 换 AT/RT 并写入账号管理。OAuth 应用需允许该 redirect_uri。</p>
+              <label>OAuth Client ID <input type="text" name="oauth_client_id" placeholder="OpenAI OAuth 应用 client_id" autocomplete="off" /></label>
+              <label>OAuth Redirect URI <input type="text" name="oauth_redirect_uri" placeholder="留空则用 https://chatgpt.com/（登录取 code 时固定用 localhost:1455）" /></label>
+            </div>
+            <div class="settings-card">
+              <h3>运行参数</h3>
+              <div class="settings-row-2">
+                <label>线程数 <input type="number" name="thread_count" min="1" placeholder="1" /></label>
+                <label>重试次数 <input type="number" name="retry_count" min="1" max="5" placeholder="2" title="单条注册失败后重试次数，1-5" /></label>
+              </div>
+              <div class="settings-row-2">
+                <label>每卡使用次数 <input type="number" name="card_use_limit" min="1" placeholder="1" /></label>
+                <label>手机号绑定数 <input type="number" name="phone_bind_limit" min="1" placeholder="1" /></label>
+              </div>
+            </div>
+            <div class="settings-submit">
+              <button type="submit">保存全部</button>
+            </div>
+          </form>
+        </section>
+      </main>
+    </div>
+  </div>
+  <div id="modal" class="modal hidden">
+    <div class="modal-content">
+      <span class="modal-close">&times;</span>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+  <div id="toast-container" class="toast-container"></div>
+  <script src="/static/app.js?v=20260318-2"></script>
+</body>
+</html>
