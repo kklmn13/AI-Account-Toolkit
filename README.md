@@ -37,6 +37,7 @@ AI-Account-Toolkit/
     │   └── claude-key-switch/ # Claude 密钥切换工具
     ├── email/               # 邮箱相关子模块
     │   ├── cloudflare_temp_email/ # Cloudflare 临时邮箱服务
+    │   ├── tempmail/        # 自托管临时邮箱服务（多域名、MX 自动验证、Web 管理）
     │   ├── msOauth2api/     # 微软 OAuth2 邮件取件 API
     │   ├── Hotmail-Outlook-Create-Account-Register-Auto/ # Hotmail 账号自动创建工具
     │   └── outlook-auto-register/ # Outlook 邮箱注册工具集
@@ -319,6 +320,19 @@ AI-Account-Toolkit/
 - README.md - 项目说明
 
 **使用指南**：[packages/general/ExaFree/README.md](packages/general/ExaFree/README.md)
+
+### 25. tempmail - 自托管临时邮箱服务
+
+**功能**：一个自托管临时邮件服务平台，支持多域名池、用户自助提交域名、MX 自动验证与自动禁用、API Key 鉴权及 Web 管理后台。基于 Docker 部署，包含 PostgreSQL、PgBouncer、Redis、Postfix 等完整组件。
+
+**主要文件**：
+- `docker-compose.yml` - 容器化部署配置
+- `api/` - Go API 服务
+- `frontend/` - 静态 SPA 前端
+- `sql/` - 数据库初始化和迁移脚本
+- `.env.example` - 环境变量配置模板
+
+**使用指南**：[packages/email/tempmail/README.md](packages/email/tempmail/README.md)
 
 ## 快速开始
 

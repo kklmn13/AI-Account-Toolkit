@@ -53,3 +53,6 @@
 [submodule "packages/general/ExaFree"]
 	path = packages/general/ExaFree
 	url = https://github.com/chengtx809/ExaFree.git
+[submodule "packages/email/tempmail"]
+	path = packages/email/tempmail
+	url = https://github.com/123nhh/tempmail.git
